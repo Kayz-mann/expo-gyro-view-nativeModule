@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "expo-gyro-view": ["../src/index"],
+      "expo-gyro-view/*": ["../src/*"]
+    }
+  }
+}
