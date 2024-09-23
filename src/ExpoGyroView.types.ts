@@ -1,7 +1,10 @@
+import { ViewStyle } from "react-native";
+
 export type ChangeEventPayload = {
   value: string;
 };
 
 export type ExpoGyroViewProps = {
-  name: string;
+  placeholderText?: string;
+  style?: ViewStyle;
 };
