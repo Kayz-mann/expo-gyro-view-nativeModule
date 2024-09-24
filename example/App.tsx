@@ -1,6 +1,6 @@
 import { GyroView } from "expo-gyro-view";
 import { useRef, useState } from "react";
-import { TouchableOpacity, SafeAreaView, Text } from "react-native";
+import { TouchableOpacity, SafeAreaView, Text, Alert } from "react-native";
 
 export default function App() {
   const [isTracking, setIsTracking] = useState(false);
@@ -9,24 +9,23 @@ export default function App() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <GyroView
-        // track={isTracking}
+        track={isTracking}
         placeholderText="Start"
         style={{ flex: 1 }}
-        //   onGyroEvent={({ nativeEvent: { y } }) => {
-        //     if (y > 0 && !isModalVisible.current) {
-        //       isModalVisible.current = true;
-        //       Alert.alert("Oops!", "You are upside down 😱", [
-        //         {
-        //           text: "OK",
-        //           style: "default",
-        //           onPress: () => {
-        //             isModalVisible.current = false;
-        //           },
-        //         },
-        //       ]);
-        //     }
-        //   }
-        // }
+        onGyroEvent={({ nativeEvent: { y } }) => {
+          if (y > 0 && !isModalVisible.current) {
+            isModalVisible.current = true;
+            Alert.alert("Oops!", "You are upside down 😱", [
+              {
+                text: "OK",
+                style: "default",
+                onPress: () => {
+                  isModalVisible.current = false;
+                },
+              },
+            ]);
+          }
+        }}
       />
       <TouchableOpacity
         style={{
